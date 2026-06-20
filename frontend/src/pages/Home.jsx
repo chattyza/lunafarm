@@ -114,7 +114,7 @@ export default function Home() {
             <div className="relative max-w-md">
               <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-xl">search</span>
               <input
-                className="input-field pl-10"
+                className="input-field pl-10 text-center placeholder:text-center"
                 placeholder="ค้นหาชื่อหรือสายพันธุ์..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
