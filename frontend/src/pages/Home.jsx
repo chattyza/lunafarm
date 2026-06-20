@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState, useCallback } from 'react'
 import { getCats } from '../api/cats'
+import api from '../api/axios'
 import CatCard from '../components/CatCard'
 import { useWS } from '../context/WSContext'
 
@@ -37,7 +38,12 @@ export default function Home() {
   const [search, setSearch] = useState('')
   const [activeBreed, setActiveBreed] = useState('ทั้งหมด')
   const [activeStatus, setActiveStatus] = useState('')
+  const [visitCount, setVisitCount] = useState(null)
   const { lastEvent } = useWS()
+
+  useEffect(() => {
+    api.post('/visits').then(res => setVisitCount(res.data.count)).catch(() => {})
+  }, [])
 
   const fetchCats = useCallback(() => {
     setLoading(true)
@@ -78,6 +84,12 @@ export default function Home() {
                 นัดเยี่ยมชม
               </a>
             </div>
+            {visitCount !== null && (
+              <p className="mt-6 text-sm text-on-surface-variant font-nunito">
+                <span className="material-symbols-outlined align-middle text-base mr-1">visibility</span>
+                มีผู้เข้าชมแล้ว <span className="font-bold text-primary">{visitCount.toLocaleString()}</span> ครั้ง
+              </p>
+            )}
           </div>
 
           <div className="order-1 md:order-2 relative">

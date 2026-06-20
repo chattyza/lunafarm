@@ -41,6 +41,9 @@ app.mount("/static", StaticFiles(directory=os.path.join(os.path.dirname(__file__
 
 # Routers
 from routers import auth, cats, upload
+from database import SessionLocal
+from models import SiteVisit
+from sqlalchemy import update
 app.include_router(auth.router)
 app.include_router(cats.router)
 app.include_router(upload.router)
@@ -54,3 +57,29 @@ def root():
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+
+@app.post("/api/visits")
+def increment_visit():
+    db = SessionLocal()
+    try:
+        row = db.query(SiteVisit).filter(SiteVisit.id == 1).first()
+        if not row:
+            row = SiteVisit(id=1, count=1)
+            db.add(row)
+        else:
+            row.count += 1
+        db.commit()
+        return {"count": row.count}
+    finally:
+        db.close()
+
+
+@app.get("/api/visits")
+def get_visits():
+    db = SessionLocal()
+    try:
+        row = db.query(SiteVisit).filter(SiteVisit.id == 1).first()
+        return {"count": row.count if row else 0}
+    finally:
+        db.close()

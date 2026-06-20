@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, Enum, Float
+from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, Enum, Float, BigInteger
 from sqlalchemy.sql import func
 from database import Base
 import enum
@@ -46,3 +46,10 @@ class Cat(Base):
     neutered = Column(Boolean, default=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+
+
+class SiteVisit(Base):
+    __tablename__ = "site_visits"
+
+    id = Column(Integer, primary_key=True, default=1)
+    count = Column(BigInteger, default=0)
