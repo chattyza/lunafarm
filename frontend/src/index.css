@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface font-nunito;
+  }
+  h1, h2, h3, h4, h5 {
+    @apply font-quicksand;
+  }
+}
+
+@layer utilities {
+  .hero-pattern {
+    background-color: #FDFCFF;
+    background-image: radial-gradient(#C9B3E8 0.5px, transparent 0.5px),
+      radial-gradient(#C9B3E8 0.5px, #FDFCFF 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+  }
+  .cat-card {
+    box-shadow: 0 10px 30px -10px rgba(123, 94, 167, 0.12);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .cat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -15px rgba(123, 94, 167, 0.22);
+  }
+  .soft-depth {
+    box-shadow: 0 4px 20px -5px rgba(123, 94, 167, 0.08);
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .btn-primary {
+    @apply bg-primary-container text-on-primary-container px-8 py-3 rounded-full font-bold font-quicksand hover:scale-105 active:scale-95 transition-transform soft-depth cursor-pointer;
+  }
+  .btn-outline {
+    @apply border-2 border-primary text-primary px-8 py-3 rounded-full font-bold font-quicksand hover:bg-primary/5 transition-colors cursor-pointer;
+  }
+  .input-field {
+    @apply w-full border border-outline-variant rounded-lg px-4 py-3 text-on-surface bg-surface-container-lowest focus:outline-none focus:border-primary transition-colors font-nunito;
+  }
+}

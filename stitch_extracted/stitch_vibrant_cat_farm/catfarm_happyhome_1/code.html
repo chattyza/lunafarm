@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CatFarm HappyHome - ฟาร์มแมวแห่งความสุข</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#e6c443",
+                    "on-tertiary-container": "#6a3839",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#edeeef",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container-high": "#e7e8e9",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary-fixed": "#350e11",
+                    "on-secondary-container": "#745f00",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#ffe179",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-primary": "#ffb77a",
+                    "background": "#f8f9fa",
+                    "on-primary-fixed-variant": "#6d3a00",
+                    "surface-tint": "#8f4e00",
+                    "surface-variant": "#e1e3e4",
+                    "primary-fixed-dim": "#ffb77a",
+                    "on-surface": "#191c1d",
+                    "on-background": "#191c1d",
+                    "tertiary-container": "#e8a4a4",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary": "#864f50",
+                    "tertiary-fixed-dim": "#fbb5b5",
+                    "primary": "#8f4e00",
+                    "on-tertiary-fixed-variant": "#6a3839",
+                    "outline": "#877365",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#554500",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#d9dadb",
+                    "surface": "#f8f9fa",
+                    "primary-fixed": "#ffdcc2",
+                    "secondary-container": "#feda57",
+                    "primary-container": "#ff9f43",
+                    "on-surface-variant": "#544437",
+                    "on-primary-container": "#6d3a00",
+                    "on-secondary-fixed": "#231b00",
+                    "tertiary-fixed": "#ffdad9",
+                    "secondary": "#715c00",
+                    "surface-container-low": "#f3f4f5",
+                    "outline-variant": "#dac2b1",
+                    "on-primary-fixed": "#2e1500"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "container-max": "1200px",
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Nunito Sans"],
+                    "headline-lg-mobile": ["Quicksand"],
+                    "label-md": ["Quicksand"],
+                    "headline-lg": ["Quicksand"],
+                    "headline-md": ["Quicksand"],
+                    "headline-sm": ["Quicksand"],
+                    "body-lg": ["Nunito Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-pattern {
+            background-color: #f8f9fa;
+            background-image: radial-gradient(#ff9f43 0.5px, transparent 0.5px), radial-gradient(#ff9f43 0.5px, #f8f9fa 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.1;
+        }
+        .cat-card-shadow {
+            box-shadow: 0 10px 30px -10px rgba(143, 78, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cat-card-shadow:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(143, 78, 0, 0.2);
+        }
+        .soft-depth {
+            box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">pets</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">CatFarm HappyHome</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body-lg text-body-lg text-primary font-bold border-b-2 border-primary transition-colors" href="#">เกี่ยวกับเรา</a>
+<a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors" href="#">น้องแมวของเรา</a>
+<a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors" href="#">บริการ</a>
+<a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors" href="#">ติดต่อเรา</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold hover:scale-95 duration-200 transition-transform active:opacity-90">
+                จองคิวเยี่ยมชม
+            </button>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden px-margin-mobile md:px-margin-desktop py-16 md:py-32">
+<div class="absolute inset-0 hero-pattern -z-10"></div>
+<div class="max-w-container-max mx-auto grid md:grid-cols-2 items-center gap-12">
+<div class="order-2 md:order-1">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-6">
+                        ฟาร์มแมวแห่งความสุข <br/>พบกับน้องแมวที่รอคุณมารับไปดูแล
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-lg">
+                        สัมผัสความน่ารักและอบอุ่นจากสมาชิกใหม่ของครอบครัว เราคัดสรรแมวสายพันธุ์ดี เลี้ยงดูแลด้วยความรักและระบบมาตรฐานพรีเมียม
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary-container text-on-primary-container px-10 py-4 rounded-full font-bold text-body-lg hover:scale-105 transition-transform soft-depth">
+                            จองคิวเยี่ยมชม
+                        </button>
+<button class="border-2 border-primary text-primary px-10 py-4 rounded-full font-bold text-body-lg hover:bg-primary/5 transition-colors">
+                            ดูน้องแมวทั้งหมด
+                        </button>
+</div>
+</div>
+<div class="order-1 md:order-2 relative">
+<div class="absolute -top-10 -right-10 w-64 h-64 bg-secondary-container/30 rounded-full blur-3xl -z-10"></div>
+<div class="rounded-xl overflow-hidden shadow-2xl border-8 border-white transform rotate-2">
+<img class="w-full h-auto object-cover" data-alt="A collection of adorable, fluffy kittens of various breeds like British Shorthair and Scottish Fold playing together in a bright, sun-drenched room. The setting is clean, modern, and filled with warm natural light. The kittens look happy and healthy, with vibrant eyes and plush fur, embodying the joyful and premium brand identity of CatFarm HappyHome. The colors are warm, featuring soft creams, oranges, and earthy tones that harmonize with the brand's primary orange palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgbfuBoXMeDbmjB62GCQiBitROjj7qpH_oVX5a8fHs7e6ocesx-UBouPhPPaoF_tUcNO4sBsZHgnSvaKMaTjNNqcbCZvDVdNkTFEgLb5yScOFxkKWDYlMDKwGfQ4npo-GKOwGTZraznHn17ep2pJ3dwxqTW9tCF8oobBOBqU_oGOU-VQHaoVNZlZLHoJz57eZ4lEhX_6fXNUtKauAbCIriipWDJ5x0axk8NGNugEanPtDiOYQBU6ZZZQw9vi2ZPjj5QLMsW1Nu844"/>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg flex items-center gap-3 animate-bounce">
+<span class="material-symbols-outlined text-secondary text-3xl">favorite</span>
+<span class="font-bold text-secondary">ดูแลด้วยรัก 100%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="bg-surface-container-low py-24 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto text-center mb-16">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">เรื่องราวของเรา</h2>
+<div class="w-24 h-1 bg-primary-container mx-auto rounded-full"></div>
+</div>
+<div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+<div class="rounded-lg overflow-hidden h-[400px]">
+<img class="w-full h-full object-cover" data-alt="A professional breeder gently holding a beautiful, healthy ginger cat in a clean, modern facility. The lighting is soft and high-key, emphasizing the pristine and caring environment of CatFarm HappyHome. The scene conveys expertise and deep affection for felines, using a palette of soft whites and warm oranges to maintain a friendly, professional atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtiiQftVN5jXBoo7q-rjx7Vf0sNLXwRfXTujCwqP6Qdmo_fgIoP15fOcgOyXjNQeJieu-SVW_ItzcIS_b6FaTlBysHTT0d-qwlrc24JxTu1v8yoTA7RTBxEdZMLoW9vl39aU8ZNKCvjSRtc5S5j5qjEg4_X2ipH5mUl3bo_LdQvCHk9FsD6vyofsxpRGUSh2RXM1uCWnWyTLE-LI0oWvxOnQFDPefLg45ak-WrTIXboInyEoAsfepBC5bS_CB6ulOOJRn1Kp_I_MQ"/>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">ความหลงใหลในการสร้างครอบครัวที่สมบูรณ์</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">
+                        ที่ CatFarm HappyHome เราไม่ได้แค่เพาะพันธุ์แมว แต่เราสร้างสมาชิกใหม่ให้กับครอบครัวของคุณ ทุกตัวเกิดจากพ่อแม่พันธุ์ที่ผ่านการคัดสรรสุขภาพอย่างดีเยี่ยม และเติบโตมาในสภาพแวดล้อมที่เป็นมิตร
+                    </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        เราใส่ใจในทุกรายละเอียด ตั้งแต่โภชนาการ การฉีดวัคซีน ไปจนถึงการขัดเกลานิสัยให้น้องเป็นแมวที่น่ารักและขี้อ้อนที่สุดสำหรับคุณ
+                    </p>
+</div>
+</div>
+</section>
+<!-- Featured Cats Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-white">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-2">น้องแมวพร้อมย้ายบ้าน</h2>
+<p class="text-on-surface-variant">หาเพื่อนซี้สี่ขาที่เหมาะกับไลฟ์สไตล์ของคุณ</p>
+</div>
+<a class="text-primary font-bold hover:underline flex items-center gap-1" href="#">
+                        ดูทั้งหมด <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Cat Card 1 -->
+<div class="bg-white rounded-lg overflow-hidden cat-card-shadow border border-surface-variant">
+<div class="h-64 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A cute white British Shorthair kitten with round blue eyes looking curiously at the camera. The kitten has a soft, thick coat and is sitting on a pastel-colored cushion. The background is a minimalist, modern living space with soft focus. The overall aesthetic is clean, bright, and heartwarming, aligned with the CatFarm brand's vibrant yet gentle style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTTbnNQrEO4V3or0UqtRsCttZjBdA4o9xVj0tldNxviGtbJ_bzlTUPH4dsjs3U2whgo9cPLDb4P9JUsdUX2KNzHupzX9jFbf5RFkc9O_TOeHTgHIZmweLeRwPEy30_G5exYDAZebnX_O1DKFLwLoYeRNK8V9yZrl-AK__fgWmqBA1ZAFYhC1FKzI9Rua65Fw30b3xz0PdCV1HwDDPx_24a176KWYsrEQWKnfN9cKs2kOBjkjScTNtmPeBMUp9kNZ4GVVWa6nacAms"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">น้องสำลี</h4>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-md font-label-md">ขี้อ้อน</span>
+</div>
+<p class="text-on-surface-variant mb-6">British Shorthair • 3 เดือน</p>
+<button class="w-full py-3 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-all">
+                                View Profile
+                            </button>
+</div>
+</div>
+<!-- Cat Card 2 -->
+<div class="bg-white rounded-lg overflow-hidden cat-card-shadow border border-surface-variant">
+<div class="h-64 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A charming golden Scottish Fold cat with folded ears and large amber eyes. The cat is sitting gracefully on a wooden floor. The environment is bright and cozy, filled with soft afternoon sunlight. The photography style is high-end and detailed, capturing the texture of the golden fur against the warm tones of the interior design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSpcUaATIySvEDK2rycj5FFWb7A4KP2BGZkCGCWb3ECI22scZmK5091bYTsvZMkydJT1PS1rVoYuXcDtWPlDqxShyeKp42Q73Rf_d6jzr-LXlYwGG4HK2sZxlmvyuilHmjDw_rqa9SIaG4zR7UaKEpDopQdWohd5EJYHCMIzZUM0df73u2ESlIMjwL5nUiSLtDj9G6WguXbnyFlS66lcPpQ-NL3qAVuo-xw55W_xPL8oKLWRw0TwJSiCBl2f5S6cN7vVjo31Jpn2Q"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">น้องขนมปัง</h4>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-md font-label-md">นิ่งสงบ</span>
+</div>
+<p class="text-on-surface-variant mb-6">Scottish Fold • 4 เดือน</p>
+<button class="w-full py-3 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-all">
+                                View Profile
+                            </button>
+</div>
+</div>
+<!-- Cat Card 3 -->
+<div class="bg-white rounded-lg overflow-hidden cat-card-shadow border border-surface-variant">
+<div class="h-64 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A playful Ragdoll kitten with distinctive blue eyes and a silky pointed coat. The kitten is in mid-play with a small toy, showing agility and vitality. The setting is a bright, airy playroom with pastel accents. The mood is joyful and energetic, emphasizing the healthy and active nature of kittens from CatFarm HappyHome." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM1TYfpwdfz626bfl9ZH32njXTF7icVelmyQB40qGNyuMghVxJK2gRoWma6cL1jtQxtCz_n8sDlMa0uYjaEPu2IRIB28gEx8OdLAHB0QgY4mHW1bJnmoIXSPxg6NzrsTfW9AIQqFBUGwyoJ1CZrEWKj3omHLkJqQCQE-4oO8sMH0kzJGNTcr_2sW8W0AtWymMPDxVvn_vu0XX_JJbskAmvWS-koZu_T5wBwC75cKQdso079ANbiX329mfGR2PtgqIUXBcSSkMweiQ"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">น้องกะทิ</h4>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-md font-label-md">ซุกซน</span>
+</div>
+<p class="text-on-surface-variant mb-6">Ragdoll • 2.5 เดือน</p>
+<button class="w-full py-3 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-all">
+                                View Profile
+                            </button>
+</div>
+</div>
+<!-- Cat Card 4 -->
+<div class="bg-white rounded-lg overflow-hidden cat-card-shadow border border-surface-variant">
+<div class="h-64 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A majestic grey Maine Coon kitten with tufted ears and a bushy tail, looking regal and calm. The kitten is posed on a minimalist modern cat tree. The lighting is sophisticated, creating gentle shadows that highlight the Maine Coon's unique features. The atmosphere is premium and professional, showcasing high-quality breeding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb9Z6oDwdq3Bh0dRmKnjjCVgE725lKcU3ldrwKnY-Nw4eUTTOhCuJ-tQpk5KrlJiCjUrTYQMLxZW37lls4qK3-VyVsFCf6F4aIpcGOO4bJFUmcqCDh5ACS7WIkElEjMygYplZhOMOZ-V1yI1yxjBomFZOY6uu3Qiomn2zMKnx2eekoNJ9XLIV6uTxaiJMS3VJj839Stwg_Gf20IennXM6qUaLuFSTGPSQ0TtJToVXCcAMcssOhOHbJyODmQqNShoNKJJYX-AaSE8g"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">น้องหมอก</h4>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-md font-label-md">สุขุม</span>
+</div>
+<p class="text-on-surface-variant mb-6">Maine Coon • 3.5 เดือน</p>
+<button class="w-full py-3 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-all">
+                                View Profile
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">บริการและคุณภาพระดับพรีเมียม</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">เรามุ่งมั่นที่จะให้การดูแลที่ดีที่สุดแก่น้องแมวและทาสแมวทุกท่านด้วยมาตรฐานระดับสากล</p>
+</div>
+<div class="grid md:grid-cols-3 gap-gutter">
+<div class="bg-white p-10 rounded-lg text-center soft-depth">
+<div class="w-20 h-20 bg-primary-container/20 rounded-full flex items-center justify-center mx-auto mb-8">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">award_star</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-4">พ่อพันธุ์แม่พันธุ์คุณภาพ</h4>
+<p class="text-on-surface-variant">คัดสรรสายพันธุ์แท้ที่มีสุขภาพแข็งแรงและโครงสร้างที่สมบูรณ์แบบตามมาตรฐานสายพันธุ์</p>
+</div>
+<div class="bg-white p-10 rounded-lg text-center soft-depth">
+<div class="w-20 h-20 bg-secondary-container/20 rounded-full flex items-center justify-center mx-auto mb-8">
+<span class="material-symbols-outlined text-secondary text-4xl" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-4">การดูแลสุขภาพระดับพรีเมียม</h4>
+<p class="text-on-surface-variant">ตรวจสุขภาพและทำวัคซีนโดยสัตวแพทย์ผู้เชี่ยวชาญสม่ำเสมอ พร้อมสมุดบันทึกสุขภาพประจำตัว</p>
+</div>
+<div class="bg-white p-10 rounded-lg text-center soft-depth">
+<div class="w-20 h-20 bg-tertiary-container/20 rounded-full flex items-center justify-center mx-auto mb-8">
+<span class="material-symbols-outlined text-tertiary text-4xl" style="font-variation-settings: 'FILL' 1;">psychology_alt</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-4">คำแนะนำการเลี้ยงดู</h4>
+<p class="text-on-surface-variant">บริการให้คำปรึกษาตลอดอายุขัยของน้องแมว เพื่อให้คุณและน้องมีความสุขที่สุดในการอยู่ร่วมกัน</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact/Location Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-white">
+<div class="max-w-container-max mx-auto">
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-6">เยี่ยมชมฟาร์มของเรา</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10">
+                            เปิดบ้านต้อนรับทุกท่านที่ต้องการสัมผัสความน่ารักของน้องแมวตัวจริง กรุณานัดหมายล่วงหน้าเพื่อความเป็นส่วนตัวและสุขอนามัยที่ดีของน้องแมว
+                        </p>
+<div class="space-y-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<div>
+<p class="font-bold text-on-surface">ที่อยู่</p>
+<p class="text-on-surface-variant">123 หมู่บ้านแสนสุข ซอยแมวเหมียว เขตจตุจักร กรุงเทพมหานคร 10900</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary">call</span>
+<div>
+<p class="font-bold text-on-surface">เบอร์โทรศัพท์</p>
+<p class="text-on-surface-variant">081-234-5678</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<div>
+<p class="font-bold text-on-surface">เวลาทำการ</p>
+<p class="text-on-surface-variant">ทุกวัน 09:00 - 18:00 (กรุณานัดหมายล่วงหน้า)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="rounded-xl overflow-hidden shadow-xl h-[450px] border border-surface-variant relative">
+<div class="absolute inset-0 bg-surface-container flex items-center justify-center" data-location="Bangkok, Thailand" style="">
+<img class="w-full h-full object-cover opacity-80" data-alt="A clean and artistic stylized map showing a modern urban neighborhood in Bangkok, Thailand, with a bright orange marker for 'CatFarm HappyHome'. The map uses soft pastel colors and clear, friendly typography. It is minimalist and elegant, blending seamlessly with the vibrant light-mode design of the website." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2t_A0V-bFSq8BJ23p_hSlQdlPmKfHyqfZfLbDqeMX7dOsf3ZLK2494iohAJDBL450aoQgqVNoP8nqjznnJNxs9HOn-DQjC2q7cRUGr31HgFKPEHjRzVWfYxgBNHck8gIPG6tf8EAsU4uPbFywmaAsSvMZhhrIfuVtuyJo-N9gG3o6kEXbeYE-GWvgQPQYZGAncEOLoeqEpzWazXxCVo2RlDcy2tbdm7LE7tKvpcYbB2CJTWatWI7qSi3D-rh-9s679tdnMdCPuVA"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center p-8 bg-white/40 backdrop-blur-[2px]">
+<span class="material-symbols-outlined text-primary text-6xl mb-4" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<p class="bg-white px-6 py-2 rounded-full font-bold shadow-sm text-primary">ดูบน Google Maps</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-lg bg-surface-container-high">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 gap-gutter max-w-container-max mx-auto">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">pets</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">CatFarm HappyHome</span>
+</div>
+<p class="text-on-surface-variant max-w-xs text-center md:text-left">สร้างความสุขผ่านเจ้าเหมียวตัวน้อย มอบสิ่งที่ดีที่สุดให้สมาชิกใหม่ของครอบครัวคุณ</p>
+</div>
+<div class="flex flex-col items-center md:items-end gap-6">
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">นโยบายความเป็นส่วนตัว</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">ข้อกำหนดการใช้งาน</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">แผนผังเว็บไซต์</a>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary cursor-pointer hover:scale-110 transition-transform shadow-sm">
+<span class="material-symbols-outlined">face_nod</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary cursor-pointer hover:scale-110 transition-transform shadow-sm">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary cursor-pointer hover:scale-110 transition-transform shadow-sm">
+<span class="material-symbols-outlined">photo_camera</span>
+</div>
+</div>
+<p class="text-on-surface-variant opacity-80 font-body-md text-body-md">© 2024 CatFarm HappyHome. สงวนลิขสิทธิ์</p>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth reveal interaction for cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.cat-card-shadow').forEach(card => {
+                card.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
+                observer.observe(card);
+            });
+        });
+    </script>
+</body></html>
